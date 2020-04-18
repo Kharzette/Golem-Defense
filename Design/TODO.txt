@@ -26,10 +26,11 @@ x						black cube
 			health/mana bars
 			icons for spells on 1 2 3 4 etc
 	Code
-		Player Movement
-			limit vertical cam movement
-			mousewheel scroll cam dist
-			cam collider?
+x		Player Movement
+x			limit vertical cam movement
+x			smooth out roll buildup
+x			mousewheel scroll cam dist
+nah			cam collider?
 		Golem ai
 			bash near
 x			follow player if not pissed off

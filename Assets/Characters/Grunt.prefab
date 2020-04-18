@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 65690663296236482}
   - component: {fileID: 23612633437414526}
   - component: {fileID: 54717783683635092}
+  - component: {fileID: 114726434159483878}
   - component: {fileID: 114497339548849282}
   m_Layer: 0
   m_Name: Grunt
@@ -121,5 +122,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb5a62d931bdc9848b665ce74a3b9e8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114726434159483878
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1483013681625620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f4085f79462f9e408687c78bbb94e2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

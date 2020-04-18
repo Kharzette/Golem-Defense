@@ -12,9 +12,12 @@ public class Player : MonoBehaviour
 	Camera		mMyCam;
 	float		mCamDist;
 
-	const float	MoveSpeed	=7f;
+	const float	MoveSpeed	=700f;
+	const float	ZoomSpeed	=100f;
 	const float	TurnSpeed	=70f;
 	const float	JumpSpeed	=50f;
+	const float	MinZoom		=5f;
+	const float	MaxZoom		=25;
 
 
 	void Start()
@@ -42,10 +45,20 @@ public class Player : MonoBehaviour
 		float	jmp		=Input.GetAxis("Jump");
 		float	sprint	=1f + Input.GetAxis("Sprint");
 		float	spawn	=Input.GetAxis("DebugSpawn");
+		float	wheel	=Input.GetAxis("Mouse ScrollWheel");
 
+		bool	bSnapCameraLocal	=false;
 		if(spawn > 0f)
 		{
 			mCombat.DebugSpawn();
+		}
+
+		if(wheel != 0f)
+		{
+			mCamDist	-=ZoomSpeed * wheel * Time.deltaTime;
+			mCamDist	=Mathf.Clamp(mCamDist, MinZoom, MaxZoom);
+
+			bSnapCameraLocal	=true;
 		}
 
 		//rotate camera if right mouse held
@@ -60,11 +73,11 @@ public class Player : MonoBehaviour
 			//do camera look up down
 			ang.x	-=(my * TurnSpeed * Time.deltaTime);
 
+			ang.x	=Mathf.Clamp(ang.x, 0.01f, 65f);
+
 			mMyCam.transform.eulerAngles	=ang;
 
-			Vector3	dir	=mMyCam.transform.localRotation * -Vector3.forward;
-
-			mMyCam.transform.localPosition	=dir * mCamDist;
+			bSnapCameraLocal	=true;
 		}
 		else
 		{
@@ -85,7 +98,9 @@ public class Player : MonoBehaviour
 
 			move.Normalize();
 
-			transform.position	+=move * Time.deltaTime * (MoveSpeed * sprint);
+			mRigidBody.AddForce(move * Time.deltaTime * (MoveSpeed * sprint));
+
+//			transform.position	+=move * Time.deltaTime * (MoveSpeed * sprint);
 
 			//rotate player to face camera direction if moving
 			Vector3	dir	=mMyCam.transform.position - transform.position;
@@ -100,15 +115,28 @@ public class Player : MonoBehaviour
 			//adjust camera position for new rotation
 			mMyCam.transform.rotation	=camCopy;
 
-			dir	=mMyCam.transform.localRotation * -Vector3.forward;
+			//this can cause roll sometimes to build up slowly
+			Vector3		eul	=mMyCam.transform.localEulerAngles;
 
-			mMyCam.transform.localPosition	=dir * mCamDist;
+			//clear the roll
+			eul.z	=0;
+
+			mMyCam.transform.localEulerAngles	=eul;
+
+			bSnapCameraLocal	=true;
 		}
 
 		if(jmp > 0)
 		{
 			mRigidBody.AddRelativeForce(Vector3.up
 				* Time.deltaTime * JumpSpeed, ForceMode.Impulse);
+		}
+
+		if(bSnapCameraLocal)
+		{
+			Vector3	dir	=mMyCam.transform.localRotation * -Vector3.forward;
+
+			mMyCam.transform.localPosition	=dir * mCamDist;
 		}
 
 //		print("Sprint: " + sprint);
