@@ -8,25 +8,38 @@ x			bridge?
 		Characters
 			Self
 				Wizardy lookin thing
-				Blue cube for starters
+x				Blue cube for starters
 			Golem
 				Big easy to make low poly brute
-				big brown cube for starters
+x				big brown cube for starters
 			Enemies
 				Some sort of assgoblinoid
 					Basic grunt fighter
-						red cube
+x						red cube
 					archer
-						puke green cube
+x						puke green cube
 					shaman
-						purple cube
+x						purple cube
 					chieftan
-						black cube
+x						black cube
 		UI
 			health/mana bars
 			icons for spells on 1 2 3 4 etc
 	Code
-		Golem ai (bash near)
+		Player Movement
+			limit vertical cam movement
+			mousewheel scroll cam dist
+			cam collider?
+		Golem ai
+			bash near
+x			follow player if not pissed off
+		basic enemy ai
+x			approach goals
+			if aggro chase enemy
+			if hate a new target more switch to them
+			attack when in range
+			kill if fall below certain Y
+			death cleanup object
 		enemy fighter AI (run up and attack most hated)
 		enemy archer AI (close to firing range, attack most hated)
 		enemy shaman AI (heal / buff friends, debuff enemies)

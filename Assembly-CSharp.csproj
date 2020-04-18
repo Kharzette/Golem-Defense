@@ -59,6 +59,7 @@
      <Compile Include="Assets\Code\EnemyGruntAI.cs" />
      <Compile Include="Assets\Code\EnemyShamanAI.cs" />
      <Compile Include="Assets\Code\EnemySpawner.cs" />
+     <Compile Include="Assets\Code\EnemyState.cs" />
      <Compile Include="Assets\Code\Golem.cs" />
      <Compile Include="Assets\Code\Player.cs" />
  <Reference Include="UnityEngine.CoreModule">

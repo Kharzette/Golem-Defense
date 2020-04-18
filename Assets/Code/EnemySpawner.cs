@@ -6,6 +6,7 @@ public class EnemySpawner : MonoBehaviour
 {
 	public Combat		mCombat;
 	public GameObject	mGrunt, mChief, mArcher, mShaman;
+	public GameObject	mBridgeGoal, mFinalGoal;
 
 	float	mTimeToNextWave;
 
@@ -21,6 +22,9 @@ public class EnemySpawner : MonoBehaviour
 	void Start()
 	{
 		mCombat.RegisterSpawner(this);
+
+		mBridgeGoal	=GameObject.Find("/BridgeGoal");
+		mFinalGoal	=GameObject.Find("/EnemyGoal");
 	}
 
 
@@ -149,7 +153,8 @@ public class EnemySpawner : MonoBehaviour
 		}
 
 		eai.SetCombat(mCombat);
-
+		eai.SetBridgeGoal(mBridgeGoal);
+		eai.SetFinalGoal(mFinalGoal);
 	}
 
 
