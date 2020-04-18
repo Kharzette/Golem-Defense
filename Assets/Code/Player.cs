@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+	public Golem	mPet;
+	public Combat	mCombat;
+
 	Rigidbody	mRigidBody;
+	Combatant	mMyStats;
 
 	const float	MoveSpeed	=7f;
 	const float	TurnSpeed	=70f;
@@ -14,6 +18,9 @@ public class Player : MonoBehaviour
 	void Start()
 	{
 		mRigidBody	=GetComponent<Rigidbody>();
+		mMyStats	=GetComponent<Combatant>();
+
+		mCombat.RegisterCombatant(mMyStats);
 	}
 	
 
@@ -25,6 +32,12 @@ public class Player : MonoBehaviour
 		float	m2		=Input.GetAxis("Fire2");
 		float	jmp		=Input.GetAxis("Jump");
 		float	sprint	=1f + Input.GetAxis("Sprint");
+		float	spawn	=Input.GetAxis("DebugSpawn");
+
+		if(spawn > 0f)
+		{
+			mCombat.DebugSpawn();
+		}
 
 		Vector3	move	=transform.forward * forw;
 
@@ -55,6 +68,6 @@ public class Player : MonoBehaviour
 				* Time.deltaTime * JumpSpeed, ForceMode.Impulse);
 		}
 
-		print("Sprint: " + sprint);
+//		print("Sprint: " + sprint);
 	}	
 }

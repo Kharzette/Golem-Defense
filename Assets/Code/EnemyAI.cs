@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyGruntAI : MonoBehaviour
+public class EnemyAI : MonoBehaviour
 {
+	internal Combat	mCombat;
+
+
 	void Start()
 	{
 	}
@@ -11,5 +14,11 @@ public class EnemyGruntAI : MonoBehaviour
 
 	void Update()
 	{
+	}
+
+
+	public void SetCombat(Combat cmb)
+	{
+		mCombat	=cmb;
 	}
 }

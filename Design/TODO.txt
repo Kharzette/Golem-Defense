@@ -1,9 +1,9 @@
 Unity?
 	Art needs
-		Basic gameplay map(s)
-			terrain and a defense spot
-			stone gate?
-			bridge?
+x		Basic gameplay map(s)
+x			terrain and a defense spot
+x			stone gate?
+x			bridge?
 		Navmesh needed?
 		Characters
 			Self
@@ -17,7 +17,7 @@ Unity?
 					Basic grunt fighter
 						red cube
 					archer
-						orange cube
+						puke green cube
 					shaman
 						purple cube
 					chieftan

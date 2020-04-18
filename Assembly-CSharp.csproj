@@ -52,10 +52,13 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Code\Combat.cs" />
+     <Compile Include="Assets\Code\Combatant.cs" />
+     <Compile Include="Assets\Code\EnemyAI.cs" />
      <Compile Include="Assets\Code\EnemyArcherAI.cs" />
      <Compile Include="Assets\Code\EnemyChiefAI.cs" />
      <Compile Include="Assets\Code\EnemyGruntAI.cs" />
      <Compile Include="Assets\Code\EnemyShamanAI.cs" />
+     <Compile Include="Assets\Code\EnemySpawner.cs" />
      <Compile Include="Assets\Code\Golem.cs" />
      <Compile Include="Assets\Code\Player.cs" />
  <Reference Include="UnityEngine.CoreModule">
