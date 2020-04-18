@@ -1,0 +1,61 @@
+Unity?
+	Art needs
+		Basic gameplay map(s)
+			terrain and a defense spot
+			stone gate?
+			bridge?
+		Navmesh needed?
+		Characters
+			Self
+				Wizardy lookin thing
+				Blue cube for starters
+			Golem
+				Big easy to make low poly brute
+				big brown cube for starters
+			Enemies
+				Some sort of assgoblinoid
+					Basic grunt fighter
+						red cube
+					archer
+						orange cube
+					shaman
+						purple cube
+					chieftan
+						black cube
+		UI
+			health/mana bars
+			icons for spells on 1 2 3 4 etc
+	Code
+		Golem ai (bash near)
+		enemy fighter AI (run up and attack most hated)
+		enemy archer AI (close to firing range, attack most hated)
+		enemy shaman AI (heal / buff friends, debuff enemies)
+		enemy chief AI (aura heal, enrage friends)
+		Combat system
+			some kind of d20ish attack rolls vs defense etc
+			cooldowns on attacks and special abilities
+			hate system for target choice
+		Overhead health bar for golem
+			Buff /debuff icons below health bar
+		Overhead health bar for enemy bosses
+			Buff /debuff icons below health bar
+		onscreen health / mana for self
+			Buff /debuff icons below health bar
+		onscreen gold counter
+		Spells
+			Mend Earth (golem heal)
+			Visage of Terror (make things focus on golem)
+			lifesteal on attack buff
+			damage shield buff
+			AC buff
+			haste buff
+			fireball
+			mana steal (channeled?)
+			wall of fire
+			Curse
+			Poison damage over time
+			heal aura
+			enrage aura
+		between round stuff
+			Spend gold?
+		Menu?

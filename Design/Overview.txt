@@ -1,0 +1,36 @@
+Theme is Keep it Alive
+
+Ideas
+	Necromancer sim?
+		Keep yourself alive, forever!
+	Alien abduction
+		Capture and transport a human to a distant star
+	Maintenance Girl
+		Exiled to reality for unknown crimes
+		Must work for a few thousand years
+			Pilot a ship that steers nearby stars into a shredding orbit around the AGI
+		AGI tears apart stars giving off enormous radiation
+		Collectors grab the energy to power huge matrioska brains simulating trillions of people
+	Civ Protector
+		Cruise about the galaxy
+		Use long range sensors to find budding civs / life
+		Make sure their star is stable
+			Tone down blue giants and adjust orbits of worlds
+			Dam up novas
+			refuel older stars
+		Repair world mag fields
+		Intercept perturbators
+	Golem Specialist Magi
+		Protect a city/tower/whatever from attack waves
+		Keep your golem alive, if it dies game over
+			Magic Spells
+				Healing magic
+				Fading / Incorporeality / Invisibility for yourself briefly
+				Buffs
+					Lifesteal
+					damage shield
+					damage add
+					Haste
+			Collect plunder from fallen invaders
+				Upgrade golem
+				Upgrade spells
