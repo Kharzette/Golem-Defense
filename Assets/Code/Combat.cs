@@ -54,6 +54,35 @@ public class Combat : MonoBehaviour
 	}
 	
 
+	internal void RemoveCombatant(Combatant c, bool bFriendly)
+	{
+		if(c == null)
+		{
+			print("Attempt to remove null combatant!");
+			return;
+		}
+
+		if(bFriendly)
+		{
+			if(!mFriendlies.Contains(c))
+			{
+				print("Attempt to remove unregistered combatant!");
+				return;
+			}
+			mFriendlies.Remove(c);
+		}
+		else
+		{
+			if(!mEnemies.Contains(c))
+			{
+				print("Attempt to remove unregistered combatant!");
+				return;
+			}
+			mEnemies.Remove(c);
+		}
+	}
+	
+
 	void Update()
 	{
 	}
@@ -96,18 +125,39 @@ public class Combat : MonoBehaviour
 	}
 
 
+	void Kill(Combatant ded)
+	{
+		if(mEnemies.Contains(ded))
+		{
+			EnemyAI	ai	=ded.gameObject.GetComponent<EnemyAI>();
+			ai.Kill();
+		}
+		else if(mFriendlies.Contains(ded))
+		{			
+		}
+		else
+		{
+			print("Unregistered deader!  Call the dusties");
+		}
+	}
+
+
 	internal void Attack(Combatant attacker, Combatant defender)
 	{
-		int	roll	=Random.Range(1, 20);
+		if(defender.mHealth <= 0)
+		{
+			print("Defender already dead!");
+			return;
+		}
 
-		print("Attack roll: " + roll);
+		int	roll	=Random.Range(1, 20);
 
 		if(roll == 20)
 		{
 			//crit!
 			int	dmg	=attacker.DamageRoll() * 2;
 
-			print("" + attacker.gameObject + " attacks " + defender.gameObject + " and hits for " + dmg + " points of damage!");
+			//print("" + attacker.gameObject + " attacks " + defender.gameObject + " and hits for " + dmg + " points of damage!");
 
 			defender.mHealth	-=dmg;
 		}
@@ -119,10 +169,16 @@ public class Combat : MonoBehaviour
 			{
 				int	dmg	=attacker.DamageRoll();
 
-				print("" + attacker.gameObject + " attacks " + defender.gameObject + " and hits for " + dmg + " points of damage!");
+				//print("" + attacker.gameObject + " attacks " + defender.gameObject + " and hits for " + dmg + " points of damage!");
 
 				defender.mHealth	-=dmg;
 			}
+		}
+
+		if(defender.mHealth <= 0)
+		{
+			print("Attacker " + attacker.gameObject + " scores a kill on " + defender.gameObject);
+			Kill(defender);
 		}
 	}
 

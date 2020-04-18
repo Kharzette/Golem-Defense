@@ -109,6 +109,12 @@ public class EnemyAI : MonoBehaviour
 		mFinalGoal	=go;
 	}
 
+	internal void Kill()
+	{
+		mState.SetState(estate.Dead);
+		mCombat.RemoveCombatant(mMyStats, false);
+	}
+
 
 	internal void Attack()
 	{

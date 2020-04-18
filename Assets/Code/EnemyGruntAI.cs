@@ -7,14 +7,18 @@ public class EnemyGruntAI : MonoBehaviour
 {
 	EnemyAI		mAI;
 	Combatant	mStats;
+	Rigidbody	mRBody;
+	bool		mbDeadImpulse;
 
 	const float	AttackRange		=1.5f;	//melee
 	const float	AttackCoolDown	=2f;
+	const float	SmackDownForce	=10f;
 
 	void Start()
 	{
 		mAI		=GetComponent<EnemyAI>();
 		mStats	=GetComponent<Combatant>();
+		mRBody	=GetComponent<Rigidbody>();
 
 		mStats.mAC			=5;
 		mStats.mAttack		=1;
@@ -27,7 +31,17 @@ public class EnemyGruntAI : MonoBehaviour
 	void Update()
 	{
 		if(mAI.mState.GetState() == estate.Dead)
-		{			
+		{
+			if(!mbDeadImpulse)
+			{
+				mRBody.constraints	=RigidbodyConstraints.None;
+
+				Vector3	smack	=Random.onUnitSphere;
+				smack	+=Vector3.up * 2f;
+
+				mRBody.AddForce(smack * SmackDownForce, ForceMode.Impulse);
+				mbDeadImpulse	=true;
+			}
 			return;
 		}
 
