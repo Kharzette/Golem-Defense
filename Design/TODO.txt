@@ -4,6 +4,8 @@ x		Basic gameplay map(s)
 x			terrain and a defense spot
 x			stone gate?
 x			bridge?
+		Blood spray particles for hits
+		dirt chunk particles for golem hits
 		Navmesh needed?
 		Characters
 			Self
@@ -36,9 +38,9 @@ nah			cam collider?
 x			follow player if not pissed off
 		basic enemy ai
 x			approach goals
-			if aggro chase enemy
+x			if aggro chase enemy
 			if hate a new target more switch to them
-			attack when in range
+x			attack when in range
 			kill if fall below certain Y
 			death cleanup object
 		enemy fighter AI (run up and attack most hated)

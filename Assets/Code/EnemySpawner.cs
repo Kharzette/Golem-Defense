@@ -143,12 +143,14 @@ public class EnemySpawner : MonoBehaviour
 		GameObject	ga	=obj as GameObject;
 		if(ga == null)
 		{
+			print("gameObject cast fail");
 			return;	//TODO: log something
 		}
 
 		EnemyAI	eai	=ga.GetComponent<EnemyAI>();
 		if(eai == null)
 		{
+			print("no enemy ai");
 			return;	//TODO: log something
 		}
 

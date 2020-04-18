@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
 
 		mMyCam	=go.GetComponent<Camera>();
 
-		mCombat.RegisterCombatant(mMyStats);
+		mCombat.RegisterCombatant(mMyStats, true);
 
 		mCamDist	=mMyCam.transform.localPosition.magnitude;
 	}
