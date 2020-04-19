@@ -6,6 +6,7 @@ x			stone gate?
 x			bridge?
 		Blood spray particles for hits
 		dirt chunk particles for golem hits
+		Arrow flying for archers
 		Wizardy Looking Crosshair
 		Navmesh needed?
 		Characters

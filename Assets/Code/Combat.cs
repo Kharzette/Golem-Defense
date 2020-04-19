@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Combat : MonoBehaviour
 {
+	//text UI element for spamming combat action
+	public UnityEngine.UI.Text	mCombatSpew;
+
 	List<Combatant>		mEnemies	=new List<Combatant>();
 	List<Combatant>		mFriendlies	=new List<Combatant>();
 	List<EnemySpawner>	mSpawners	=new List<EnemySpawner>();
@@ -157,7 +160,9 @@ public class Combat : MonoBehaviour
 			//crit!
 			int	dmg	=attacker.DamageRoll() * 2;
 
-			//print("" + attacker.gameObject + " attacks " + defender.gameObject + " and hits for " + dmg + " points of damage!");
+			mCombatSpew.text	+="" + attacker.gameObject.name +
+				" attacks " + defender.gameObject.name + " and crits for "
+				+ dmg + " points of damage!\n";
 
 			defender.mHealth	-=dmg;
 		}
@@ -169,7 +174,9 @@ public class Combat : MonoBehaviour
 			{
 				int	dmg	=attacker.DamageRoll();
 
-				//print("" + attacker.gameObject + " attacks " + defender.gameObject + " and hits for " + dmg + " points of damage!");
+				mCombatSpew.text	+="" + attacker.gameObject.name +
+					" attacks " + defender.gameObject.name + " and hits for "
+					+ dmg + " points of damage!\n";
 
 				defender.mHealth	-=dmg;
 			}
@@ -177,7 +184,8 @@ public class Combat : MonoBehaviour
 
 		if(defender.mHealth <= 0)
 		{
-			print("Attacker " + attacker.gameObject + " scores a kill on " + defender.gameObject);
+			mCombatSpew.text	+="Attacker " + attacker.gameObject.name
+				+ " scores a kill on " + defender.gameObject.name + "\n";
 			Kill(defender);
 		}
 	}

@@ -47,6 +47,9 @@ ExportedObj/
 *.opendb
 *.VC.db
 
+#metas are annoying I don't care if they are needed
+*.meta
+
 # Unity3D generated meta files
 *.pidb.meta
 *.pdb.meta
