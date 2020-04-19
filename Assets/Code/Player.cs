@@ -6,11 +6,17 @@ public class Player : MonoBehaviour
 {
 	public Golem	mPet;
 	public Combat	mCombat;
+	public Spells	mSpells;
 
 	Rigidbody	mRigidBody;
-	Combatant	mMyStats;
+	Combatant	mStats;
 	Camera		mMyCam;
 	float		mCamDist;
+
+	//spellery
+	Spells.SpellTypes	mCastingType;
+	Spell				mCastingSpell;
+	float				mCastTimeRemaining;
 
 	const float	MoveSpeed	=700f;
 	const float	ZoomSpeed	=100f;
@@ -23,20 +29,24 @@ public class Player : MonoBehaviour
 	void Start()
 	{
 		mRigidBody	=GetComponent<Rigidbody>();
-		mMyStats	=GetComponent<Combatant>();
+		mStats	=GetComponent<Combatant>();
 
 		GameObject	go	=GameObject.Find("Main Camera");
 
 		mMyCam	=go.GetComponent<Camera>();
 
-		mCombat.RegisterCombatant(mMyStats, true);
+		mCombat.RegisterCombatant(mStats, true);
 
 		mCamDist	=mMyCam.transform.localPosition.magnitude;
+
+		mCastingType	=Spells.SpellTypes.None;
 	}
 	
 
 	void Update()
 	{
+		UpdateSpells();
+
 		float	side	=Input.GetAxis("Horizontal");
 		float	forw	=Input.GetAxis("Vertical");
 		float	mx		=Input.GetAxis("Mouse X");
@@ -51,6 +61,11 @@ public class Player : MonoBehaviour
 		if(spawn > 0f)
 		{
 			mCombat.DebugSpawn();
+		}
+
+		if(mCastingType != Spells.SpellTypes.None)
+		{
+			sprint	=0.5f;	//slow when casting
 		}
 
 		if(wheel != 0f)
@@ -140,5 +155,98 @@ public class Player : MonoBehaviour
 		}
 
 //		print("Sprint: " + sprint);
-	}	
+	}
+
+
+	void UpdateSpells()
+	{
+		if(mCastingType != Spells.SpellTypes.None)
+		{
+			mCastTimeRemaining	-=Time.deltaTime;
+			if(mCastTimeRemaining <= 0f)
+			{
+				CastFinished();
+			}
+			return;
+		}
+
+		if(mStats.mCurGCD > 0f)
+		{
+			return;
+		}
+
+		float	s1		=Input.GetAxis("Spell01");
+		float	s2		=Input.GetAxis("Spell02");
+		float	s3		=Input.GetAxis("Spell03");
+		float	s4		=Input.GetAxis("Spell04");
+		float	s5		=Input.GetAxis("Spell05");
+		float	s6		=Input.GetAxis("Spell06");
+
+		if(s1 > 0f)
+		{
+			MendEarth	me		=new MendEarth();
+			mCastingSpell		=me.mData;
+			mCastingType		=Spells.SpellTypes.MendEarth;
+			mCastTimeRemaining	=me.mData.mCastTime;
+
+			mCastingSpell.mTarget	=mPet.mStats;
+			return;
+		}
+
+		if(s2 > 0f)
+		{
+			Crystalize	cr		=new Crystalize();
+			mCastingSpell		=cr.mData;
+			mCastingType		=Spells.SpellTypes.Crystalize;
+			mCastTimeRemaining	=cr.mData.mCastTime;
+
+			mCastingSpell.mTarget	=mPet.mStats;
+			return;
+		}
+	}
+
+
+	void CastFinished()
+	{
+		mSpells.CastSpell(mCastingSpell);
+
+		//will need this later for particles etc
+		switch(mCastingType)
+		{
+			case	Spells.SpellTypes.Crystalize:
+				break;
+			case	Spells.SpellTypes.Curse:
+				break;
+			case	Spells.SpellTypes.DeadlyCloud:
+				break;
+			case	Spells.SpellTypes.FireBall:
+				break;
+			case	Spells.SpellTypes.ManaDrinker:
+				break;
+			case	Spells.SpellTypes.MendEarth:
+				break;
+			case	Spells.SpellTypes.RageAura:
+				break;
+			case	Spells.SpellTypes.Rapidity:
+				break;
+			case	Spells.SpellTypes.ReGrowthAura:
+				break;
+			case	Spells.SpellTypes.VampiricStrikes:
+				break;
+			case	Spells.SpellTypes.VisageOfTerror:
+				break;
+			case	Spells.SpellTypes.WallOfFire:
+				break;
+			case	Spells.SpellTypes.WardOfVengeance:
+				break;
+			default:
+				print("Casting empty spell!?");
+				break;
+		}
+
+		//clear spell stuff
+		mStats.mCurGCD	=mStats.mGCD;
+		mCastingSpell	=null;
+		mCastingType	=Spells.SpellTypes.None;
+	}
 }
