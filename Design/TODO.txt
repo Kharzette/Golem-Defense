@@ -6,6 +6,7 @@ x			stone gate?
 x			bridge?
 		Blood spray particles for hits
 		dirt chunk particles for golem hits
+		Wizardy Looking Crosshair
 		Navmesh needed?
 		Characters
 			Self
@@ -33,8 +34,8 @@ x			limit vertical cam movement
 x			smooth out roll buildup
 x			mousewheel scroll cam dist
 nah			cam collider?
-		Golem ai
-			bash near
+x		Golem ai
+x			bash near
 x			follow player if not pissed off
 		basic enemy ai
 x			approach goals
@@ -43,35 +44,37 @@ x			if aggro chase enemy
 x			attack when in range
 			kill if fall below certain Y
 			death cleanup object
-		enemy fighter AI (run up and attack most hated)
+x		enemy fighter AI (run up and attack most hated)
 		enemy archer AI (close to firing range, attack most hated)
 		enemy shaman AI (heal / buff friends, debuff enemies)
 		enemy chief AI (aura heal, enrage friends)
 		Combat system
-			some kind of d20ish attack rolls vs defense etc
-			cooldowns on attacks and special abilities
+x			some kind of d20ish attack rolls vs defense etc
+x			cooldowns on attacks and special abilities
 			hate system for target choice
+		Onscreen combat log?
 		Overhead health bar for golem
 			Buff /debuff icons below health bar
 		Overhead health bar for enemy bosses
 			Buff /debuff icons below health bar
 		onscreen health / mana for self
 			Buff /debuff icons below health bar
-		onscreen gold counter
+		Gold plundered from the fallen
+			onscreen gold counter
 		Spells
 			Mend Earth (golem heal)
 			Visage of Terror (make things focus on golem)
-			lifesteal on attack buff
-			damage shield buff
-			AC buff
-			haste buff
+			lifesteal on attack buff (Vampiric Strikes)
+			damage shield buff (ward of vengeance)
+			AC buff (crystalize)
+			haste buff (rapidity)
 			fireball
-			mana steal (channeled?)
+			mana steal (channeled?) (mana drinker)
 			wall of fire
 			Curse
-			Poison damage over time
-			heal aura
-			enrage aura
+			Poison damage over time targ AE (deadly cloud)
+			heal aura (regrowth aura)
+			enrage aura (rage aura)
 		between round stuff
 			Spend gold?
 		Menu?

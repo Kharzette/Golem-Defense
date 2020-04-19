@@ -20,7 +20,8 @@ public class Golem : MonoBehaviour
 	public Combat	mCombat;
 
 	Rigidbody	mRigidBody;
-	Combatant	mStats;
+
+	internal Combatant	mStats;
 
 	const float	MoveSpeed		=10f;
 	const float	FollowRange		=10f;
@@ -36,12 +37,13 @@ public class Golem : MonoBehaviour
 
 		mCombat.RegisterCombatant(mStats, true);
 
-		mStats.mAC			=12;
-		mStats.mAttack		=5;
-		mStats.mDmgMin		=4;
-		mStats.mDmgMax		=16;
+		mStats.mAC			=mStats.mBaseAC				=12;
+		mStats.mAttack		=mStats.mBaseAttack			=5;
+		mStats.mDmgMin		=mStats.mBaseDmgMin			=4;
+		mStats.mDmgMax		=mStats.mBaseDmgMax			=16;
+		mStats.mAttackRange	=mStats.mBaseAttackRange	=AttackRange;
+
 		mStats.mMaxHealth	=mStats.mHealth	=2000;
-		mStats.mAttackRange	=AttackRange;
 	}
 	
 
@@ -127,11 +129,11 @@ public class Golem : MonoBehaviour
 			}
 			else
 			{
-				if(mStats.mGCD < 0)
+				if(mStats.mCurGCD < 0)
 				{
 					mCombat.Attack(mStats, mTarget);
 
-					mStats.mGCD	=AttackInterval;
+					mStats.mCurGCD	=mStats.mGCD;
 
 					if(mTarget.mHealth <= 0)
 					{

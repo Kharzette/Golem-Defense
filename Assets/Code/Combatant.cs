@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class Combatant : MonoBehaviour
 {
-	//this one will show up in inspector
-	public int	mHealth, mMana;
+	//these will show up in inspector
+	public int		mHealth, mMana;
+	public int		mAC, mAttack, mDmgMin, mDmgMax;
+	public float	mAttackRange;
 
 	//stats
 	internal int	mMaxHealth, mMaxMana;
-	internal int	mAC;			//armor class
-	internal int	mAttack;
-	internal int	mDmgMin, mDmgMax;
-	internal float	mAttackRange;
-	internal float	mGCD;
+	internal int	mBaseAC;			//armor class
+	internal int	mBaseAttack;
+	internal int	mBaseDmgMin, mBaseDmgMax;
+	internal float	mBaseAttackRange;
+	internal float	mBaseGCD, mGCD, mCurGCD;
 
 	EnemyAI	mAI;
 
@@ -28,7 +30,7 @@ public class Combatant : MonoBehaviour
 
 	void Update()
 	{
-		mGCD	-=Time.deltaTime;
+		mCurGCD	-=Time.deltaTime;
 	}
 
 

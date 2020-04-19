@@ -20,11 +20,13 @@ public class EnemyGruntAI : MonoBehaviour
 		mStats	=GetComponent<Combatant>();
 		mRBody	=GetComponent<Rigidbody>();
 
-		mStats.mAC			=5;
-		mStats.mAttack		=1;
-		mStats.mDmgMin		=1;
-		mStats.mDmgMax		=6;
-		mStats.mAttackRange	=AttackRange;
+		mStats.mAC			=mStats.mBaseAC				=5;
+		mStats.mAttack		=mStats.mBaseAttack			=1;
+		mStats.mDmgMin		=mStats.mBaseDmgMin			=1;
+		mStats.mDmgMax		=mStats.mBaseDmgMax			=6;
+		mStats.mAttackRange	=mStats.mBaseAttackRange	=AttackRange;
+
+		mStats.mMaxHealth	=mStats.mHealth	=2000;
 	}
 
 
@@ -48,13 +50,13 @@ public class EnemyGruntAI : MonoBehaviour
 		if(mAI.mState.GetState() == estate.PissedOff)
 		{
 			//ready to attack?
-			if(mStats.mGCD <= 0f)
+			if(mStats.mCurGCD <= 0f)
 			{
 				//in range?
 				if(mAI.InRange(AttackRange))
 				{
 					mAI.Attack();
-					mStats.mGCD	=AttackCoolDown;
+					mStats.mCurGCD	=mStats.mGCD;
 				}
 				else
 				{

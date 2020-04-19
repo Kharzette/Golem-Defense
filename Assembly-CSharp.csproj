@@ -62,6 +62,21 @@
      <Compile Include="Assets\Code\EnemyState.cs" />
      <Compile Include="Assets\Code\Golem.cs" />
      <Compile Include="Assets\Code\Player.cs" />
+     <Compile Include="Assets\Code\Spells\Crystalize.cs" />
+     <Compile Include="Assets\Code\Spells\Curse.cs" />
+     <Compile Include="Assets\Code\Spells\DeadlyCloud.cs" />
+     <Compile Include="Assets\Code\Spells\FireBall.cs" />
+     <Compile Include="Assets\Code\Spells\ManaDrinker.cs" />
+     <Compile Include="Assets\Code\Spells\MendEarth.cs" />
+     <Compile Include="Assets\Code\Spells\RageAura.cs" />
+     <Compile Include="Assets\Code\Spells\Rapidity.cs" />
+     <Compile Include="Assets\Code\Spells\RegrowthAura.cs" />
+     <Compile Include="Assets\Code\Spells\Spell.cs" />
+     <Compile Include="Assets\Code\Spells\Spells.cs" />
+     <Compile Include="Assets\Code\Spells\VampiricStrikes.cs" />
+     <Compile Include="Assets\Code\Spells\VisageOfTerror.cs" />
+     <Compile Include="Assets\Code\Spells\WallOfFire.cs" />
+     <Compile Include="Assets\Code\Spells\WardOfVengeance.cs" />
  <Reference Include="UnityEngine.CoreModule">
  <HintPath>C:/Games/Unity/2017.4.28f1/Editor/Data/Managed/UnityEngine/UnityEngine.CoreModule.dll</HintPath>
  </Reference>
